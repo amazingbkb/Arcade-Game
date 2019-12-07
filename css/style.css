@@ -1,0 +1,6 @@
+body {
+    text-align: center;
+    background: url('../images/background.png') center no-repeat;
+    height: 100%;
+    background-size: cover;
+}
