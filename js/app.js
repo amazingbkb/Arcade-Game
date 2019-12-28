@@ -139,7 +139,7 @@ window.onload = function() {
     background.play();
 };
 
-// Adding soundsm effect and backgroung music
+// Adding sounds effect and backgroung music
 
 var background = new Audio('sounds/background.mp3')
 var dead = new Audio('sounds/dead.m4a')
