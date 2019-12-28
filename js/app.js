@@ -29,6 +29,7 @@ Enemy.prototype.update = function(dt) {
     }
     // When player collide with enemy, player will lose a life.
     if (player.x > (this.x - 50) && player.x < (this.x + 50) && player.y > (this.y - 50) && player.y < (this.y + 50)) {
+        dead.play();
         reset ();
         player.lives -= 1;
     }
@@ -57,6 +58,7 @@ const player = new Player(202, 400,'images/char-boy.png');
 */ 
 Player.prototype.update = function(dt) {
     if (game && player.y < 40) {
+        win.play();
         this.score  += 20;
         reset ();
     }
@@ -94,6 +96,7 @@ Player.prototype.handleInput = function(direction) {
 
 //Setup player's movement
 document.addEventListener('keyup', function(e) {
+    move.play();
     var allowedKeys = {
         37: 'left',
         38: 'up',
@@ -122,6 +125,7 @@ let newGame = function() {
     var id = setInterval(function(){ 
         player.timer--; 
       if(player.timer< 0){
+        Game.play();
         clearInterval(id);
         alert('Game Over! Your score is ' + player.score + ' Points');
         newGame();
@@ -132,5 +136,13 @@ let newGame = function() {
 
 window.onload = function() {
     newGame();
+    background.play();
 };
 
+// Adding soundsm effect and backgroung music
+
+var background = new Audio('sounds/background.mp3')
+var dead = new Audio('sounds/dead.m4a')
+var move = new Audio('sounds/move.wav')
+var win = new Audio('sounds/win.wav')
+var Game = new Audio('sounds/GameOver.wav')
